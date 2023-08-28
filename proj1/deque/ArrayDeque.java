@@ -1,9 +1,8 @@
 package deque;
-import java.util.Deque;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T>{
     private T[] items;
     private int size;
     private int front;
@@ -27,7 +26,6 @@ public class ArrayDeque<T> {
         size++;
     }
 
-    // Add an item to the back of the deque
     public void addLast(T item) {
         if (size == items.length) {
             resize(items.length * 2);
@@ -35,11 +33,6 @@ public class ArrayDeque<T> {
         items[back] = item;
         back = (back + 1) % items.length;
         size++;
-    }
-
-    // Check if the deque is empty
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public int size() {
@@ -53,7 +46,6 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    // Remove and return the item at the front of the deque
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -118,8 +110,6 @@ public class ArrayDeque<T> {
         ArrayDeque<?> that = (ArrayDeque<?>) o;
 
         if (size != that.size) return false;
-
-        // Compare elements
         Iterator<T> thisIterator = iterator();
         Iterator<?> thatIterator = that.iterator();
         while (thisIterator.hasNext() && thatIterator.hasNext()) {

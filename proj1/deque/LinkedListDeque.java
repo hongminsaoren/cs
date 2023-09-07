@@ -40,7 +40,6 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
 
-
     public int size() {
         return size;
     }
@@ -118,6 +117,7 @@ public class LinkedListDeque<T> implements Deque<T> {
             return item;
         }
     }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

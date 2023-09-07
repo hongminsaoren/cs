@@ -1,36 +1,41 @@
 package deque;
+
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.Iterator;
-import java.util.Objects;
-public class MaxArrayDeque<T> extends ArrayDeque{
+
+public class MaxArrayDeque<T> extends ArrayDeque {
     private Comparator<T> cmp;
-    public MaxArrayDeque(Comparator<T> c){
-        cmp=c;
+
+    public MaxArrayDeque(Comparator<T> c) {
+        cmp = c;
     }
-    public T max(){
-        if(isEmpty())
+
+    public T max() {
+        if (isEmpty()) {
             return null;
-        Iterator<T> iterator=iterator();
-        T res=iterator.next();
-        while (iterator.hasNext()){
-            T element=iterator.next();
-            if(cmp.compare(element,res)>0)
-                res=element;
         }
-        return res;
+        T maxElement = get(0);
+        for (int i = 1; i < size(); i++) {
+            T current = get(i);
+            if (cmp.compare(current, maxElement) > 0) {
+                maxElement = current;
+            }
+        }
+        return maxElement;
     }
-    public T max(Comparator<T> c){
-        if(isEmpty())
+
+    public T max(Comparator<T> c) {
+        if (isEmpty()) {
             return null;
-        Iterator<T> iterator=iterator();
-        T res=iterator.next();
-        while (iterator.hasNext()){
-            T element=iterator.next();
-            if(c.compare(element,res)>0)
-                res=element;
         }
-        return res;
+        T maxElement = get(0);
+        for (int i = 1; i < size(); i++) {
+            T current = get(i);
+            if (c.compare(current, maxElement) > 0) {
+                maxElement = current;
+            }
+        }
+        return maxElement;
     }
 
 }

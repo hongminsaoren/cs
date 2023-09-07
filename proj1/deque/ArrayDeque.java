@@ -1,8 +1,9 @@
 package deque;
+
 import java.util.Iterator;
 import java.util.Objects;
 
-public class ArrayDeque<T> implements Deque<T>{
+public class ArrayDeque<T> implements Deque<T> {
     private T[] items;
     private int size;
     private int front;
@@ -38,6 +39,7 @@ public class ArrayDeque<T> implements Deque<T>{
     public int size() {
         return size;
     }
+
     public void printDeque() {
         for (int i = 0; i < size; i++) {
             int index = (front + i) % items.length;
@@ -90,20 +92,25 @@ public class ArrayDeque<T> implements Deque<T>{
         front = 0;
         back = size;
     }
-    public Iterator<T> iterator(){
+
+    public Iterator<T> iterator() {
         return new DequeIterator();
     }
-    public class DequeIterator implements Iterator<T>{
-        private int idx=front;
-        public boolean hasNext(){
-            return idx!=back;
+
+    public class DequeIterator implements Iterator<T> {
+        private int idx = front;
+
+        public boolean hasNext() {
+            return idx != back;
         }
-        public T next(){
-            int copy=idx;
-            idx=(idx+1)%items.length;
+
+        public T next() {
+            int copy = idx;
+            idx = (idx + 1) % items.length;
             return items[copy];
         }
     }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

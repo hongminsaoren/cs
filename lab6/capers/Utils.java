@@ -93,7 +93,6 @@ class Utils {
         writeContents(file, serialize(obj));
     }
 
-
     /* OTHER FILE UTILITIES */
 
     /** Return the concatentation of FIRST and OTHERS into a File designator,
